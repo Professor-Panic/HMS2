@@ -50,9 +50,4 @@ def validate_due_date(due_date: str):
     except ValueError:
         print("Error: Invalid due date. Expected format: YYYY-MM-DD.")
         return False
-
-    if date.date() < datetime.now().date():
-        print("Error: Due date cannot be in the past.")
-        return False
-
     return True
