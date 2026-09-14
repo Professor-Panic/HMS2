@@ -1,57 +1,49 @@
 from datetime import datetime
+
+
 def validate_task_title(title: str):
     if title is None:
-        print("Error: Task title cannot be None.")
-        return False
+        raise ValueError("Task title cannot be None.")
 
     if not isinstance(title, str):
-        print("Error: Task title must be a string.")
-        return False
+        raise ValueError("Task title must be a string.")
 
     if not title.strip():
-        print("Error: Task title cannot be empty.")
-        return False
+        raise ValueError("Task title cannot be empty.")
 
     return True
 
 
 def validate_task_description(description: str):
     if description is None:
-        print("Error: Task description cannot be None.")
-        return False
+        raise ValueError("Task description cannot be None.")
 
     if not isinstance(description, str):
-        print("Error: Task description must be a string.")
-        return False
+        raise ValueError("Task description must be a string.")
 
     if not description.strip():
-        print("Error: Task description cannot be empty.")
-        return False
-
+        raise ValueError("Task description cannot be empty.")
+    if len(description) >500:
+        raise ValueError("Desciption cannot be more than 500 chars long.")
     return True
 
 
 def validate_due_date(due_date: str):
     if due_date is None:
-        print("Error: Due date cannot be None.")
-        return False
+        raise ValueError("Due date cannot be None.")
 
     if not isinstance(due_date, str):
-        print("Error: Due date must be a string.")
-        return False
+        raise ValueError("Due date must be a string.")
 
     if not due_date.strip():
-        print("Error: Due date cannot be empty.")
-        return False
+        raise ValueError("Due date cannot be empty.")
 
     try:
         datetime.strptime(due_date.strip(), "%Y-%m-%d")
-
     except ValueError:
-        print(
-            f"Error: '{due_date}' is not a valid date. "
+        raise ValueError(
+            f"'{due_date}' is not a valid date. "
             "Expected format: YYYY-MM-DD."
         )
-        return False
 
     return True
