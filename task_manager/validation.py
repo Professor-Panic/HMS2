@@ -1,6 +1,4 @@
 from datetime import datetime
-
-
 def validate_task_title(title: str):
     if title is None:
         print("Error: Task title cannot be None.")
@@ -13,6 +11,7 @@ def validate_task_title(title: str):
     if not title.strip():
         print("Error: Task title cannot be empty.")
         return False
+
     return True
 
 
@@ -28,6 +27,7 @@ def validate_task_description(description: str):
     if not description.strip():
         print("Error: Task description cannot be empty.")
         return False
+
     return True
 
 
@@ -45,9 +45,13 @@ def validate_due_date(due_date: str):
         return False
 
     try:
-        date = datetime.strptime(due_date.strip(), "%Y-%m-%d")
+        datetime.strptime(due_date.strip(), "%Y-%m-%d")
 
     except ValueError:
-        print("Error: Invalid due date. Expected format: YYYY-MM-DD.")
+        print(
+            f"Error: '{due_date}' is not a valid date. "
+            "Expected format: YYYY-MM-DD."
+        )
         return False
+
     return True
