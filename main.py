@@ -16,15 +16,6 @@ def main():
             title = input("Enter task title: ")
             description = input("Enter task description: ")
             due_date = input("Enter due date (YYYY-MM-DD): ")
-            try:
-                validate_task_title(title)
-                validate_task_description(description)
-                validate_due_date(due_date)
-
-                # Add task here
-
-            except ValueError as error:
-                print(f"Error: {error}")
             task_utils.add_task(title, description, due_date)
 
         elif choice == "2":
