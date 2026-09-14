@@ -23,8 +23,10 @@ def validate_task_description(description: str):
 
     if not description.strip():
         raise ValueError("Task description cannot be empty.")
-    if len(description) >500:
-        raise ValueError("Desciption cannot be more than 500 chars long.")
+
+    if len(description) > 500:
+        raise ValueError("Description cannot be more than 500 chars long.")
+
     return True
 
 
